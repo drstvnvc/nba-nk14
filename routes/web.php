@@ -18,14 +18,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => 'auth'
+    'middleware' => 'verified'
 ], function () {
     Route::get('/', [TeamController::class, 'index']);
     Route::get('/teams/{team}', [TeamController::class, 'show']);
     Route::get('/players/{player}', [PlayerController::class, 'show']);
-    Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::post('/teams/{team}/comments', [CommentController::class, 'store'])->name('team.comment');
+});
+
+Route::group([
+    'middleware' => 'auth'
+], function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/email/verify', [AuthController::class, 'getEmailVerificationNotice'])->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->middleware(['signed'])->name('verification.verify');
 });
 
 Route::group([

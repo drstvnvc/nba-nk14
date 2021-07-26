@@ -50,6 +50,17 @@ class AuthController extends Controller
     {
         auth()->logout();
         session()->flush();
-        return back();
+        return redirect(route('login'));
+    }
+
+    public function getEmailVerificationNotice()
+    {
+        return view('auth.verify-email');
+    }
+
+    public function verifyEmail(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+        return redirect('/');
     }
 }
