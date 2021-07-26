@@ -37,6 +37,7 @@
         <div class="form-group">
             <label for="content">Comment</label>
             <textarea name="content" class="form-control" id="content" rows="3" placeholder="Write your comment here..."></textarea>
+            @include('partials.error-message', [ 'field' => 'content' ])
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
