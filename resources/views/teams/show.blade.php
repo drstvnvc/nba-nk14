@@ -17,4 +17,29 @@
         @endforeach
     </ul>
 </div>
+
+<hr />
+
+<div>
+    <h3>Comments:</h3>
+    @foreach($team->comments as $comment)
+    <div>
+        <h4>{{$comment->user->name}}:</h4>
+        <blockquote>
+            {{$comment->content}}
+        </blockquote>
+    </div>
+    @endforeach
+
+    @auth
+    <form method="POST" action="{{route('team.comment', ['team'=>$team])}}">
+        @csrf
+        <div class="form-group">
+            <label for="content">Comment</label>
+            <textarea name="content" class="form-control" id="content" rows="3" placeholder="Write your comment here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    @endauth
+</div>
 @endsection
