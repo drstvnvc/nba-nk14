@@ -30,6 +30,7 @@ Route::group([
 
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');;
+    Route::get('/news/team/{teamName}', [NewsController::class, 'getNewsByTeam'])->name('newsForTeam');
 });
 
 Route::group([
