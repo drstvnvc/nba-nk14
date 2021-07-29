@@ -13,6 +13,9 @@
                 <a class="nav-link" href="/news">News</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/news/create">Publish article</a>
+            </li>
+            <li class="nav-item">
                 <strong> Username: {{ auth()->user()->name }} </strong>
             </li>
             <li class="nav-item">

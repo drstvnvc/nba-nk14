@@ -29,6 +29,10 @@
 
 <body class="antialiased">
     @include('partials.navbar')
+    @if(session('status_message'))
+    <div class="alert alert-info">{{session('status_message')}}</div>
+    <br />
+    @endif
 
     <div class="container">
         @yield('content')

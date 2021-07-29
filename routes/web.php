@@ -29,6 +29,8 @@ Route::group([
 
 
     Route::get('/news', [NewsController::class, 'index']);
+    Route::get('/news/create', [NewsController::class, 'create']);
+    Route::post('/news', [NewsController::class, 'store']);
     Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');;
     Route::get('/news/team/{teamName}', [NewsController::class, 'getNewsByTeam'])->name('newsForTeam');
 });
