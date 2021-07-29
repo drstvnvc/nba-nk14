@@ -7,10 +7,16 @@
 
             @auth
             <li class="nav-item">
-                <span class="nav-link">{{auth()->user()->name}}</a>
+                <a class="nav-link" href="/">Teams</a>
             </li>
             <li class="nav-item">
-                <form method="POST" action="/logout">
+                <a class="nav-link" href="/news">News</a>
+            </li>
+            <li class="nav-item">
+                <strong> Username: {{ auth()->user()->name }} </strong>
+            </li>
+            <li class="nav-item">
+                <form action="/logout" method="POST">
                     @csrf
                     <button class="btn btn-link nav-link" type="submit">Logout</button>
                 </form>
@@ -32,7 +38,7 @@
 <style>
     .navbar-nav {
         flex-direction: row !important;
-        align-items: space-between;
+        align-items: center;
     }
 
     .nav-item {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::group([
     Route::get('/players/{player}', [PlayerController::class, 'show']);
 
     Route::post('/teams/{team}/comments', [CommentController::class, 'store'])->name('team.comment');
+
+
+    Route::get('/news', [NewsController::class, 'index']);
+    Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');;
 });
 
 Route::group([
